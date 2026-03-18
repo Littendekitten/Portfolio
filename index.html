@@ -4,59 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mijn Schoolportfolio</title>
-    <style>
-        :root {
-            --bg: #f4f4f9;
-            --text: #333;
-            --accent: #2563eb;
-        }
-        body { font-family: sans-serif; line-height: 1.6; margin: 0; background: var(--bg); color: var(--text); }
-        header { background: var(--accent); color: white; padding: 2rem text-align: center; }
-        container { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
-        .project-card { background: white; padding: 1.5rem; margin-bottom: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        h1, h2 { margin-top: 0; }
-        .tag { background: #e0e7ff; color: #4338ca; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.8rem; }
-        a { color: var(--accent); text-decoration: none; font-weight: bold; }
-        footer { text-align: center; margin-top: 3rem; font-size: 0.9rem; color: #666; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-    <h1>Mijn Portfolio</h1>
-    <p>Student @ [Jouw School]</p>
-</header>
-
-<div class="container">
-    <section id="over-mij">
-        <h2>Over Mij</h2>
-        <p>Hoi! Ik ben [Je Naam]. Hier verzamel ik al mijn schoolprojecten en opdrachten die ik op GitHub heb staan.</p>
-    </section>
-
-    <hr>
-
-    <section id="projecten">
-        <h2>Mijn Projecten</h2>
-        
-        <div class="project-card">
-            <h3>Project Naam 1</h3>
-            <p>Korte uitleg van wat je hier hebt gemaakt. Bijvoorbeeld een website of een app.</p>
-            <p><span class="tag">HTML</span> <span class="tag">CSS</span></p>
-            <a href="https://github.com/JOUW-GEBRUIKERSNAAM/PROJECT-NAAM">Bekijk op GitHub →</a>
+    <nav>
+        <div class="nav-container">
+            <span class="logo">Mijn Portfolio</span>
+            <ul>
+                <li><a href="#over-mij">Over</a></li>
+                <li><a href="#projecten">Projecten</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <div class="project-card">
-            <h3>Project Naam 2</h3>
-            <p>Beschrijving van je tweede vette project.</p>
-            <p><span class="tag">Python</span> <span class="tag">Data</span></p>
-            <a href="#">Bekijk op GitHub →</a>
-        </div>
-    </section>
-</div>
+    <header>
+        <h1>Hallo, ik ben [Je Naam]</h1>
+        <p>Welkom op mijn schoolportfolio. Hieronder vind je mijn beste projecten.</p>
+    </header>
 
-<footer>
-    <p>&copy; 2026 - Gemaakt met passie voor school</p>
-</footer>
+    <main class="container">
+        <section id="over-mij">
+            <h2>Over Mij</h2>
+            <p>Ik ben momenteel student aan [Jouw School]. Ik houd me graag bezig met coderen, design en nieuwe dingen leren.</p>
+        </section>
+
+        <section id="projecten">
+            <h2>Projecten</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Webshop Project</h3>
+                    <p>Een responsive webshop gemaakt met HTML en CSS voor het vak Frontend.</p>
+                    <div class="tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                    </div>
+                    <a href="#" class="btn">Bekijk Code</a>
+                </div>
+
+                <div class="card">
+                    <h3>Python Script</h3>
+                    <p>Een automatiseringstool die data uit Excel haalt en verwerkt.</p>
+                    <div class="tags">
+                        <span>Python</span>
+                        <span>Data</span>
+                    </div>
+                    <a href="#" class="btn">Bekijk Code</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 [Je Naam] - Gemaakt voor school</p>
+    </footer>
 
 </body>
 </html>
