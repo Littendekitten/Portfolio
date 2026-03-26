@@ -1,11 +1,10 @@
-/* Sven Hildering Portfolio Styling */
-
 :root {
-    --primary: #1d4ed8;    /* Professioneel Blauw */
-    --accent: #ff0000;     /* YouTube Rood */
-    --dark: #0f172a;       /* Bijna zwart voor tekst/header */
-    --light: #f1f5f9;      /* Lichtgrijze achtergrond */
-    --text: #1e293b;       /* Donkergrijze tekst */
+    --primary: #1d4ed8;
+    --accent: #ff0000;
+    --webkitten: #ff6700;
+    --dark: #0f172a;
+    --light: #f1f5f9;
+    --text: #1e293b;
     --white: #ffffff;
 }
 
@@ -18,7 +17,6 @@ body {
     line-height: 1.6;
 }
 
-/* Navigatie balk */
 nav {
     background: var(--white);
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -46,7 +44,7 @@ nav {
 nav ul { 
     list-style: none; 
     display: flex; 
-    gap: 20px; 
+    gap: 15px; 
     margin: 0; 
     padding: 0; 
     align-items: center; 
@@ -56,28 +54,34 @@ nav a {
     text-decoration: none; 
     color: var(--text); 
     font-weight: 500; 
-    transition: color 0.2s; 
+    transition: all 0.2s; 
 }
 
 nav a:hover { 
     color: var(--primary); 
 }
 
-/* YouTube Button in Nav */
+.wk-nav {
+    color: var(--webkitten) !important;
+    font-weight: bold;
+}
+
+.wk-nav:hover {
+    text-decoration: underline;
+}
+
 .yt-link {
     color: var(--white) !important;
     background-color: var(--accent);
     padding: 8px 16px;
     border-radius: 6px;
     font-size: 0.9rem;
-    transition: background 0.3s ease;
 }
 
 .yt-link:hover { 
     background-color: #cc0000; 
 }
 
-/* Header sectie */
 header {
     background: var(--dark);
     color: var(--white);
@@ -97,15 +101,13 @@ header p {
     font-size: 1.2rem; 
 }
 
-/* Hoofdcontainer */
 .container {
     max-width: 900px;
     margin: 0 auto;
     padding: 2rem;
 }
 
-/* Over Mij Sectie */
-#over-mij { 
+#about-me { 
     margin-bottom: 3rem; 
     background: var(--white); 
     padding: 2rem; 
@@ -120,29 +122,41 @@ h2 {
     margin-bottom: 1.5rem;
 }
 
-/* Project Kaart */
-.project-focus {
+.project-grid {
     display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .card {
     background: var(--white);
     padding: 2rem;
     border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    width: 100%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     border-top: 6px solid var(--primary);
 }
 
+.webkitten-card {
+    border-top-color: var(--webkitten);
+    background-color: #fffaf5;
+}
+
+.badge {
+    background: var(--webkitten);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
 .card h3 { 
-    margin-top: 0; 
+    margin-top: 10px; 
     font-size: 1.8rem; 
     color: var(--dark); 
 }
 
-/* Foto styling */
 .project-img {
     width: 100%;
     max-height: 500px;
@@ -153,11 +167,11 @@ h2 {
     display: block;
 }
 
-/* Tags onder de foto */
 .tags { 
     display: flex; 
+    flex-wrap: wrap;
     gap: 10px; 
-    margin-top: 20px; 
+    margin: 20px 0; 
 }
 
 .tags span {
@@ -169,7 +183,27 @@ h2 {
     font-weight: 600;
 }
 
-/* Footer */
+.tags .tag-orange {
+    background: #ffedd5;
+    color: #9a3412;
+}
+
+.btn-webkitten {
+    display: inline-block;
+    background: var(--webkitten);
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-webkitten:hover {
+    background: var(--dark-orange);
+    opacity: 0.9;
+}
+
 footer { 
     text-align: center; 
     padding: 4rem 2rem; 
@@ -183,26 +217,13 @@ footer a {
     font-weight: bold; 
 }
 
-footer a:hover { 
-    text-decoration: underline; 
-}
-
-/* Mobiel vriendelijk maken */
 @media (max-width: 600px) {
     .nav-container { 
         flex-direction: column; 
         gap: 15px; 
     }
-    
-    header h1 { 
-        font-size: 1.8rem; 
-    }
-    
-    .container {
-        padding: 1rem;
-    }
-
-    .card {
-        padding: 1.5rem;
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
