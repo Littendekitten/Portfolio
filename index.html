@@ -287,8 +287,6 @@
 <!-- ── HERO ────────────────────────────────────────────── -->
 <section class="hero">
   <div class="hero-content">
-
-    <!-- Animated orbit icon -->
     <svg class="hero-orbit" viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="hg1" x1="0" y1="0" x2="1" y2="1">
@@ -315,14 +313,11 @@
       <a href="#projects" class="btn btn-primary" data-i18n="btnViewProjects">View Projects</a>
       <a href="https://www.youtube.com/@littendekitten" target="_blank" class="btn btn-yt">▶ YouTube</a>
     </div>
-
   </div>
 </section>
 
 <!-- ── MAIN ─────────────────────────────────────────────── -->
 <main>
-
-  <!-- About -->
   <section class="section" id="about">
     <div class="section-head">
       <h2 data-i18n="sectionAbout">About Me</h2>
@@ -331,14 +326,11 @@
     <div class="about-card">
       <div class="about-avatar">👋</div>
       <div class="about-text">
-        <p data-i18n="aboutText">
-          Hi, I'm Sven Hildering. Welcome to my school portfolio. I showcase the projects I've been working on — ranging from physical scale models to web development and AI apps.
-        </p>
+        <p data-i18n="aboutText">Hi, I'm Sven Hildering. Welcome to my school portfolio. I showcase the projects I've been working on — ranging from physical scale models to web development and AI apps.</p>
       </div>
     </div>
   </section>
 
-  <!-- Projects (auto-rendered from PROJECTS array below) -->
   <section class="section" id="projects">
     <div class="section-head">
       <h2 data-i18n="sectionProjects">My Projects</h2>
@@ -346,7 +338,6 @@
     </div>
     <div class="project-grid" id="projectGrid"></div>
   </section>
-
 </main>
 
 <!-- ── FOOTER ───────────────────────────────────────────── -->
@@ -364,18 +355,18 @@
 
    REQUIRED fields:
      title       — { en: "...", nl: "..." }
-     description — { en: "...", nl: "..." }  (HTML allowed: <strong>, <em>, <a>)
+     description — { en: "...", nl: "..." }  (HTML allowed: <strong>, <em>)
 
-   OPTIONAL fields (leave out the whole line to hide):
-     image       — "filename.png"          shows an image in the card
-     tags        — ["tag1", "tag2"]        shown as chips
-     tagStyle    — "default"|"orange"|"teal"|"red"   chip color (default = purple)
-     badge       — { en: "...", nl: "..." }  small label above the title
-     badgeStyle  — "orange"|"accent"|"teal"  badge color (default = orange)
-     link        — "https://..."           button URL
-     linkText    — { en: "...", nl: "..." }  button label
+   OPTIONAL fields (leave out the whole line to hide it):
+     image       — "filename.png"               shows an image in the card
+     tags        — ["tag1", "tag2"]             shown as chips
+     tagStyle    — "default"|"orange"|"teal"|"red"   chip color
+     badge       — { en: "...", nl: "..." }     small label above the title
+     badgeStyle  — "orange"|"accent"|"teal"     badge color
+     link        — "https://..."               button URL
+     linkText    — { en: "...", nl: "..." }     button label
      linkStyle   — "orange"|"accent"|"teal"|"ghost"  button color
-     accent      — "#hex"                  top-border color of the card
+     accent      — "#hex"                      top-border color of the card
 
    ═══════════════════════════════════════════════════════════ */
 
@@ -383,7 +374,7 @@ const PROJECTS = [
 
   /* ── Project 1 ── */
   {
-    title:       { en: "WebKitten 🐾",                     nl: "WebKitten 🐾" },
+    title:       { en: "WebKitten 🐾",                    nl: "WebKitten 🐾" },
     description: {
       en: "WebKitten is my personal web development service. I build high-quality, custom websites for just <strong>€2 per page</strong> (maximum 10 pages). Perfect for hobbies, small businesses, or personal portfolios.",
       nl: "WebKitten is mijn persoonlijke webontwikkelservice. Ik bouw kwalitatieve, op maat gemaakte websites voor slechts <strong>€2 per pagina</strong> (maximaal 10 pagina's). Perfect voor hobby's, kleine bedrijven of persoonlijke portfolio's.",
@@ -400,7 +391,7 @@ const PROJECTS = [
 
   /* ── Project 2 ── */
   {
-    title:       { en: "Miniature Aqualectra Canteen",     nl: "Miniatuur Aqualectra Kantine" },
+    title:       { en: "Miniature Aqualectra Canteen",    nl: "Miniatuur Aqualectra Kantine" },
     description: {
       en: "A detailed miniature design of the Aqualectra canteen. This project involved the planning, design, and realization of a scale model environment. I created this together with my friends: Ivan, Julian & Joas.",
       nl: "Een gedetailleerd miniatuurontwerp van de Aqualectra kantine. Dit project omvatte de planning, het ontwerp en de realisatie van een schaalmodel. Ik heb dit samen gemaakt met mijn vrienden: Ivan, Julian & Joas.",
@@ -413,12 +404,14 @@ const PROJECTS = [
 
   /* ── Project 3 ── */
   {
-    title:       { en: "Orbit 🪐",                         nl: "Orbit 🪐" },
+    title:       { en: "Orbit 🪐",                        nl: "Orbit 🪐" },
     description: {
       en: "Orbit is a personal AI chat app I built, with Google sign-in, persistent chats saved in Firebase, and a custom space-themed UI. It supports collapsible reasoning blocks and a streaming AI backend.",
       nl: "Orbit is een AI-chatapp die ik heb gebouwd, met Google-login, opgeslagen gesprekken in Firebase en een op maat gemaakt ruimtethema. Het ondersteunt inklapbare redeneerblokken en een streamende AI-backend.",
-         {link:        "https://littendekitten.github.io/orbit",
-    linkText:    { en: "Visit Orbit-AI →", nl: "Bezoek Orbit-AI →" },
+    },
+    link:        "https://littendekitten.github.io/orbit",
+    linkText:    { en: "Visit Orbit AI →", nl: "Bezoek Orbit AI →" },
+    linkStyle:   "teal",
     tags:        ["AI", "Firebase", "HTML / CSS / JS"],
     tagStyle:    "teal",
     badge:       { en: "App", nl: "App" },
@@ -426,25 +419,26 @@ const PROJECTS = [
     accent:      "#3ed6c0",
   },
 
-    /* ── Project 4 ── */
+  /* ── Project 4 ── */
   {
-    title:       { en: "Solution for Blue-green algae at the Zuiderzee Museum",     nl: "Oplossing Blauwalg Zuiderzeeenmuseum" },
+    title:       { en: "Solution for Blue-green Algae at the Zuiderzee Museum", nl: "Oplossing Blauwalg Zuiderzeemuseum" },
     description: {
-      en: "A detailed miniature design of the Zuiderzee Museum blue-green algae solution, Made by Fleur Neeven, Elize Epke, Felice Visser, and me: Sven Hildering!",
-      nl: "Een gedetailleerd miniatuurontwerp van de Zuiderzeeenmuseum blauwalg oplossing, gemaakt door Fleur Neeven, Elize Epke, Felice Visser, en ikzelf: Sven Hildering!",
+      en: "A detailed miniature design of the Zuiderzee Museum blue-green algae solution. Made by Fleur Neeven, Elize Epke, Felice Visser, and me: Sven Hildering!",
+      nl: "Een gedetailleerd miniatuurontwerp van de blauwalg-oplossing voor het Zuiderzeemuseum. Gemaakt door Fleur Neeven, Elize Epke, Felice Visser, en ikzelf: Sven Hildering!",
     },
     image:       "zuiderzeeontwerp.png",
     tags:        ["Miniatuur", "Design", "Creatief"],
     tagStyle:    "default",
     accent:      "#7857ff",
   },
+
   /* ── ADD MORE PROJECTS BELOW ── copy one of the blocks above,
-     paste it here, and change the values.                    */
+     paste it here, and change the values.                     */
 
 ];
 
 /* ═══════════════════════════════════════════════════════════
-   TRANSLATIONS  —  edit nav/header/footer text here
+   TRANSLATIONS  —  edit nav / header / footer text here
    ═══════════════════════════════════════════════════════════ */
 const LANG = {
   en: {
@@ -483,19 +477,16 @@ function setLang(lang) {
   currentLang = lang;
   document.documentElement.lang = lang;
 
-  // Plain-text elements
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;
     if (LANG[lang][key] !== undefined) el.textContent = LANG[lang][key];
   });
 
-  // HTML elements (footer links etc.)
   document.querySelectorAll('[data-i18n-html]').forEach(el => {
     const key = el.dataset.i18nHtml;
     if (LANG[lang][key] !== undefined) el.innerHTML = LANG[lang][key];
   });
 
-  // Lang-toggle button shows the other language
   document.getElementById('langBtn').textContent = lang === 'en' ? '🇳🇱 NL' : '🇬🇧 EN';
 
   renderProjects(lang);
@@ -528,10 +519,10 @@ function renderProjects(lang) {
       html += `<img class="proj-img" src="${p.image}" alt="${p.title[lang]}" loading="lazy">`;
     }
 
-    if (p.tags?.length) {
+    if (p.tags && p.tags.length) {
       const ts = p.tagStyle || 'default';
-      const cls = ts === 'default' ? '' : `tag-${ts}`;
-      html += `<div class="card-tags">${p.tags.map(t => `<span class="tag ${cls}">${t}</span>`).join('')}</div>`;
+      const cls = ts === 'default' ? '' : 'tag-' + ts;
+      html += '<div class="card-tags">' + p.tags.map(t => `<span class="tag ${cls}">${t}</span>`).join('') + '</div>';
     }
 
     if (p.link) {
@@ -544,7 +535,6 @@ function renderProjects(lang) {
   }
 }
 
-// Init
 setLang('en');
 
 /* ── STARS CANVAS ──────────────────────────────────────── */
