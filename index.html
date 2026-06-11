@@ -264,10 +264,18 @@
     .proj-card p { color: var(--text-dim); font-size: 14px; line-height: 1.78; }
     .proj-card p strong { color: var(--accent-lt); font-weight: 600; }
 
+    .proj-img-wrap {
+      margin: 16px 0;
+      display: inline-block;
+      width: 260px; max-width: 100%;
+    }
     .proj-img {
-      width: 100%; max-height: 420px; object-fit: cover;
-      border-radius: 10px; margin: 18px 0;
-      border: 1px solid var(--border); display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      display: block;
     }
 
     .card-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0; }
@@ -597,7 +605,7 @@ function buildProjectCard(p, lang) {
   html += `<p>${p.description[lang]}</p>`;
 
   if (p.image) {
-    html += `<img class="proj-img" src="${p.image}" alt="${p.title[lang]}" loading="lazy">`;
+    html += `<div class="proj-img-wrap"><img class="proj-img" src="${p.image}" alt="${p.title[lang]}" loading="lazy"></div>`;
   }
 
   if (p.tags && p.tags.length) {
