@@ -637,7 +637,7 @@ function renderProjects(lang) {
     const items = PROJECTS.filter(p => p.category === cat.id);
     if (!items.length) continue;
 
-    const isOpen = openState[cat.id] !== false; // default open
+    const isOpen = openState[cat.id] === true; // default closed
 
     // Folder wrapper
     const section = document.createElement('div');
