@@ -176,6 +176,57 @@
     }
     .about-text p { color: var(--text-dim); font-size: 14.5px; line-height: 1.8; }
 
+    /* ── CATEGORY FOLDER ─────────────────────────────────── */
+    .cat-section { margin-bottom: 28px; }
+
+    .cat-header {
+      display: flex; align-items: center; gap: 10px;
+      padding: 11px 18px; border-radius: 14px;
+      background: var(--panel); border: 1px solid var(--border);
+      cursor: pointer; user-select: none;
+      transition: border-color 0.18s var(--ease), background 0.18s var(--ease);
+      margin-bottom: 0;
+    }
+    .cat-header:hover { border-color: var(--border-hi); background: var(--hover); }
+
+    .cat-icon { font-size: 16px; line-height: 1; flex-shrink: 0; }
+
+    .cat-name {
+      font-size: 13.5px; font-weight: 700; color: var(--text);
+      letter-spacing: -0.2px;
+    }
+
+    .cat-count {
+      font-size: 11px; font-weight: 600;
+      padding: 2px 8px; border-radius: 100px;
+      background: rgba(120,87,255,0.14); color: var(--accent-lt);
+      border: 1px solid rgba(120,87,255,0.2);
+      margin-left: 2px;
+    }
+
+    .cat-arrow {
+      margin-left: auto; color: var(--text-muted);
+      font-size: 11px; font-weight: 700;
+      transition: transform 0.22s var(--ease);
+      flex-shrink: 0;
+    }
+    .cat-header.open .cat-arrow { transform: rotate(90deg); }
+
+    .cat-body {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.32s var(--ease), opacity 0.22s var(--ease);
+      opacity: 0;
+    }
+    .cat-body.open {
+      max-height: 4000px;
+      opacity: 1;
+    }
+
+    .cat-inner {
+      padding-top: 14px;
+    }
+
     /* ── PROJECT GRID ────────────────────────────────────── */
     .project-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
 
@@ -336,7 +387,7 @@
       <h2 data-i18n="sectionProjects">My Projects</h2>
       <div class="section-line"></div>
     </div>
-    <div class="project-grid" id="projectGrid"></div>
+    <div id="projectGrid"></div>
   </section>
 </main>
 
@@ -351,29 +402,30 @@
    ═══════════════════════════════════════════════════════════
 
    Each object in PROJECTS creates one card on the page.
-   Copy-paste an existing object and change the values.
 
    REQUIRED fields:
      title       — { en: "...", nl: "..." }
      description — { en: "...", nl: "..." }  (HTML allowed: <strong>, <em>)
+     category    — "software" | "school"
 
-   OPTIONAL fields (leave out the whole line to hide it):
-     image       — "filename.png"               shows an image in the card
-     tags        — ["tag1", "tag2"]             shown as chips
-     tagStyle    — "default"|"orange"|"teal"|"red"   chip color
-     badge       — { en: "...", nl: "..." }     small label above the title
-     badgeStyle  — "orange"|"accent"|"teal"     badge color
-     link        — "https://..."               button URL
-     linkText    — { en: "...", nl: "..." }     button label
-     linkStyle   — "orange"|"accent"|"teal"|"ghost"  button color
-     accent      — "#hex"                      top-border color of the card
+   OPTIONAL fields:
+     image       — "filename.png"
+     tags        — ["tag1", "tag2"]
+     tagStyle    — "default"|"orange"|"teal"|"red"
+     badge       — { en: "...", nl: "..." }
+     badgeStyle  — "orange"|"accent"|"teal"
+     link        — "https://..."
+     linkText    — { en: "...", nl: "..." }
+     linkStyle   — "orange"|"accent"|"teal"|"ghost"
+     accent      — "#hex"
 
    ═══════════════════════════════════════════════════════════ */
 
 const PROJECTS = [
 
-  /* ── Project 1 ── */
+  /* ── Software ── */
   {
+    category:    "software",
     title:       { en: "WebKitten 🐾",                    nl: "WebKitten 🐾" },
     description: {
       en: "WebKitten is my personal web development service. I build high-quality, custom websites for just <strong>€2 per page</strong> (maximum 10 pages). Perfect for hobbies, small businesses, or personal portfolios.",
@@ -389,21 +441,8 @@ const PROJECTS = [
     accent:      "#ff6700",
   },
 
-  /* ── Project 2 ── */
   {
-    title:       { en: "Miniature Aqualectra Canteen",    nl: "Miniatuur Aqualectra Kantine" },
-    description: {
-      en: "A detailed miniature design of the Aqualectra canteen. This project involved the planning, design, and realization of a scale model environment. I created this together with my friends: Ivan, Julian & Joas.",
-      nl: "Een gedetailleerd miniatuurontwerp van de Aqualectra kantine. Dit project omvatte de planning, het ontwerp en de realisatie van een schaalmodel. Ik heb dit samen gemaakt met mijn vrienden: Ivan, Julian & Joas.",
-    },
-    image:       "miniatuur.png",
-    tags:        ["Miniatuur", "Design", "Creatief"],
-    tagStyle:    "default",
-    accent:      "#7857ff",
-  },
-
-  /* ── Project 3 ── */
-  {
+    category:    "software",
     title:       { en: "Orbit 🪐",                        nl: "Orbit 🪐" },
     description: {
       en: "Orbit is a personal AI chat app I built, with Google sign-in, persistent chats saved in Firebase, and a custom space-themed UI. It supports collapsible reasoning blocks and a streaming AI backend.",
@@ -419,8 +458,22 @@ const PROJECTS = [
     accent:      "#3ed6c0",
   },
 
-  /* ── Project 4 ── */
+  /* ── School ── */
   {
+    category:    "school",
+    title:       { en: "Miniature Aqualectra Canteen",    nl: "Miniatuur Aqualectra Kantine" },
+    description: {
+      en: "A detailed miniature design of the Aqualectra canteen. This project involved the planning, design, and realization of a scale model environment. I created this together with my friends: Ivan, Julian & Joas.",
+      nl: "Een gedetailleerd miniatuurontwerp van de Aqualectra kantine. Dit project omvatte de planning, het ontwerp en de realisatie van een schaalmodel. Ik heb dit samen gemaakt met mijn vrienden: Ivan, Julian & Joas.",
+    },
+    image:       "miniatuur.png",
+    tags:        ["Miniatuur", "Design", "Creatief"],
+    tagStyle:    "default",
+    accent:      "#7857ff",
+  },
+
+  {
+    category:    "school",
     title:       { en: "Solution for Blue-green Algae at the Zuiderzee Museum", nl: "Oplossing Blauwalg Zuiderzeemuseum" },
     description: {
       en: "A detailed miniature design of the Zuiderzee Museum blue-green algae solution. Made by Fleur Neeven, Elize Epke, Felice Visser, and me: Sven Hildering!",
@@ -432,10 +485,10 @@ const PROJECTS = [
     accent:      "#7857ff",
   },
 
-    /* ── Project 5 ── */
   {
+    category:    "school",
     title:       { en: "Automatic tent canvas roller",    nl: "Automatische tentdoekroller" },
-        description: {
+    description: {
       en: "DISCLAIMER: I lost the original photo, so I generated it with AI",
       nl: "DISCLAIMER: Ik ben de originele foto kwijtgeraakt, dus heb ik deze met AI gegenereerd.",
     },
@@ -444,14 +497,29 @@ const PROJECTS = [
     tagStyle:    "default",
     accent:      "#7857ff",
   },
-  
-  /* ── ADD MORE PROJECTS BELOW ── copy one of the blocks above,
-     paste it here, and change the values.                     */
+
+  /* ── ADD MORE PROJECTS BELOW ── */
 
 ];
 
 /* ═══════════════════════════════════════════════════════════
-   TRANSLATIONS  —  edit nav / header / footer text here
+   CATEGORY CONFIG — edit folder names & icons here
+   ═══════════════════════════════════════════════════════════ */
+const CATEGORIES = [
+  {
+    id:    "software",
+    icon:  "💻",
+    label: { en: "Software", nl: "Software" },
+  },
+  {
+    id:    "school",
+    icon:  "🏫",
+    label: { en: "School", nl: "School" },
+  },
+];
+
+/* ═══════════════════════════════════════════════════════════
+   TRANSLATIONS
    ═══════════════════════════════════════════════════════════ */
 const LANG = {
   en: {
@@ -465,6 +533,8 @@ const LANG = {
     aboutText:       "Hi, I'm Sven Hildering. Welcome to my school portfolio. I showcase the projects I've been working on — ranging from physical scale models to web development and AI apps.",
     sectionProjects: "My Projects",
     footerText:      "© 2026 Sven Hildering &nbsp;·&nbsp; <a href='https://www.youtube.com/@littendekitten' target='_blank'>@littendekitten</a>",
+    project:         "project",
+    projects:        "projects",
   },
   nl: {
     navAbout:        "Over Mij",
@@ -477,6 +547,8 @@ const LANG = {
     aboutText:       "Hoi, ik ben Sven Hildering. Welkom op mijn schoolportfolio. Hier laat ik de projecten zien waar ik aan heb gewerkt — van fysieke schaalmodellen tot webontwikkeling en AI-apps.",
     sectionProjects: "Mijn Projecten",
     footerText:      "© 2026 Sven Hildering &nbsp;·&nbsp; <a href='https://www.youtube.com/@littendekitten' target='_blank'>@littendekitten</a>",
+    project:         "project",
+    projects:        "projecten",
   },
 };
 
@@ -509,42 +581,101 @@ document.getElementById('langBtn').addEventListener('click', () => {
   setLang(currentLang === 'en' ? 'nl' : 'en');
 });
 
+function buildProjectCard(p, lang) {
+  const card = document.createElement('div');
+  card.className = 'proj-card';
+  card.style.setProperty('--card-accent', p.accent || 'var(--accent)');
+
+  let html = '';
+
+  if (p.badge) {
+    const bs = p.badgeStyle || 'orange';
+    html += `<span class="card-badge badge-${bs}">${p.badge[lang]}</span>`;
+  }
+
+  html += `<h3>${p.title[lang]}</h3>`;
+  html += `<p>${p.description[lang]}</p>`;
+
+  if (p.image) {
+    html += `<img class="proj-img" src="${p.image}" alt="${p.title[lang]}" loading="lazy">`;
+  }
+
+  if (p.tags && p.tags.length) {
+    const ts = p.tagStyle || 'default';
+    const cls = ts === 'default' ? '' : 'tag-' + ts;
+    html += '<div class="card-tags">' + p.tags.map(t => `<span class="tag ${cls}">${t}</span>`).join('') + '</div>';
+  }
+
+  if (p.link) {
+    const ls = p.linkStyle || 'accent';
+    html += `<a class="card-link link-${ls}" href="${p.link}" target="_blank" rel="noopener">${p.linkText[lang]}</a>`;
+  }
+
+  card.innerHTML = html;
+  return card;
+}
+
 function renderProjects(lang) {
   const grid = document.getElementById('projectGrid');
   grid.innerHTML = '';
 
-  for (const p of PROJECTS) {
-    const card = document.createElement('div');
-    card.className = 'proj-card';
-    card.style.setProperty('--card-accent', p.accent || 'var(--accent)');
+  // Remember which folders are open (default: all open)
+  const openState = {};
+  document.querySelectorAll('.cat-header').forEach(h => {
+    openState[h.dataset.cat] = h.classList.contains('open');
+  });
 
-    let html = '';
+  for (const cat of CATEGORIES) {
+    const items = PROJECTS.filter(p => p.category === cat.id);
+    if (!items.length) continue;
 
-    if (p.badge) {
-      const bs = p.badgeStyle || 'orange';
-      html += `<span class="card-badge badge-${bs}">${p.badge[lang]}</span>`;
+    const isOpen = openState[cat.id] !== false; // default open
+
+    // Folder wrapper
+    const section = document.createElement('div');
+    section.className = 'cat-section';
+
+    // Count label
+    const countWord = items.length === 1 ? LANG[lang].project : LANG[lang].projects;
+
+    // Header
+    const header = document.createElement('div');
+    header.className = 'cat-header' + (isOpen ? ' open' : '');
+    header.dataset.cat = cat.id;
+    header.innerHTML = `
+      <span class="cat-icon">${isOpen ? '📂' : '📁'}</span>
+      <span class="cat-name">${cat.label[lang]}</span>
+      <span class="cat-count">${items.length} ${countWord}</span>
+      <span class="cat-arrow">▶</span>
+    `;
+
+    // Body
+    const body = document.createElement('div');
+    body.className = 'cat-body' + (isOpen ? ' open' : '');
+
+    const inner = document.createElement('div');
+    inner.className = 'cat-inner';
+
+    const projGrid = document.createElement('div');
+    projGrid.className = 'project-grid';
+
+    for (const p of items) {
+      projGrid.appendChild(buildProjectCard(p, lang));
     }
 
-    html += `<h3>${p.title[lang]}</h3>`;
-    html += `<p>${p.description[lang]}</p>`;
+    inner.appendChild(projGrid);
+    body.appendChild(inner);
 
-    if (p.image) {
-      html += `<img class="proj-img" src="${p.image}" alt="${p.title[lang]}" loading="lazy">`;
-    }
+    // Toggle
+    header.addEventListener('click', () => {
+      const nowOpen = header.classList.toggle('open');
+      body.classList.toggle('open', nowOpen);
+      header.querySelector('.cat-icon').textContent = nowOpen ? '📂' : '📁';
+    });
 
-    if (p.tags && p.tags.length) {
-      const ts = p.tagStyle || 'default';
-      const cls = ts === 'default' ? '' : 'tag-' + ts;
-      html += '<div class="card-tags">' + p.tags.map(t => `<span class="tag ${cls}">${t}</span>`).join('') + '</div>';
-    }
-
-    if (p.link) {
-      const ls = p.linkStyle || 'accent';
-      html += `<a class="card-link link-${ls}" href="${p.link}" target="_blank" rel="noopener">${p.linkText[lang]}</a>`;
-    }
-
-    card.innerHTML = html;
-    grid.appendChild(card);
+    section.appendChild(header);
+    section.appendChild(body);
+    grid.appendChild(section);
   }
 }
 
